@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'inc/error_message.html' %}
+    <form action="" method="POST">
+        <div>{{ form.csrf_token }}</div>
+        <div>{{ form.title.label(class='form-control-label') }}:{{ form.title(class='form-control') }}</div>
+        <div>{{ form.content.label(class='form-control-label') }}:{{ form.content(class='form-control') }}</div>
+        <div>{{ form.priority.label(class='form-control-label') }}:{{ form.priority(class='form-control') }}</div>
+        <div>{{ form.refer.label(class='form-control-label') }}:{{ form.refer(class='form-control') }}</div>
+        <br>
+        <input type="submit" value="ثبت تیکت" class="btn btn-success">
+    </form>
+{% endblock %}

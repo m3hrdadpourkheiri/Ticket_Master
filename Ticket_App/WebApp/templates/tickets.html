@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{{ current_user.fullname }}</h3>
+<a href="{{ url_for('new_ticket') }}" class="btn btn-primary">تیکت جدید</a>
+<br>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">عنوان</th>
+        <th scope="col">ثبت کننده</th>
+        <th scope="col">وضعییت</th>
+        <th scope="col">اولوییت</th>
+        <th scope="col">تاریخ و ساعت</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+            
+                <tr>
+                    <th scope="row">{{ ticket.id }}</th>
+                    <td><a href="{{ url_for('show_ticket',ticket_id = ticket.id) }}">{{ ticket.title }}</a></td>
+                    <td>{{ ticket.owner.fullname }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.priority }}</td>
+                    <td>{{ ticket.datetime }}</td>
+                </tr>
+            
+        {% endfor %}
+    </tbody>
+  </table>
+{% endblock %} 

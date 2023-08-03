@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+    {% block content %}
+    {% include 'inc/error_message.html' %}
+    <form action="" method="POST">
+        {{ form.csrf_token }}
+        {{ form.fullname.label(class='form-control-label') }}:{{ form.fullname(class='form-control') }}
+        {{ form.username.label(class='form-control-label') }}:{{ form.username(class='form-control') }}
+        {{ form.password.label(class='form-control-label') }}:{{ form.password(class='form-control') }}
+        {{ form.confirm_password.label(class='form-control-label') }}:{{ form.confirm_password(class='form-control') }}
+        {{ form.role.label(class='form-control-label') }}:{{ form.role(class='form-control') }}
+        {{ form.add_ticket.label(class='form-control-label') }}:{{ form.add_ticket }}
+        {{ form.add_comment.label(class='form-control-label') }}:{{ form.add_comment }}
+        {{ form.change_status.label(class='form-control-label') }}:{{ form.change_status }}
+        {{ form.ticket_master.label(class='form-control-label') }}:{{ form.ticket_master }}
+        {{ form.technician.label(class='form-control-label') }}:{{ form.technician }}
+        {{ form.Report.label(class='form-control-label') }}:{{ form.Report }}
+        <br>
+        <input type="submit" value="ایجاد کاربر جدید" class="btn btn-primary">
+    </form>
+
+    <hr><hr><hr>
+        {% for user in users %}
+        <div>
+            <div>
+            <h4>{{ user.fullname }}</h4>
+            <small>{{ user.username }}</small>
+        </div>
+        <div>
+            <input type="submit" value="ویرایش" class="btn btn-warning"> <input type="submit" value="حذف" class="btn btn-danger">
+        </div>
+            <hr>
+        </div>
+        {% endfor %}
+    {% endblock %} 

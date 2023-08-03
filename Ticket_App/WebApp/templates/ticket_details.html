@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="{{ url_for('all_ticket') }}" class="btn btn-primary">بازگشت</a>
+    <h3>{{ ticket.title }}</h3>
+    <hr>
+    {% if current_user.change_status %}
+        <form action="" method="POST">
+            {{ c_form.csrf_token }}
+            {{ s_form.status.label(class='form-control-label') }}:{{ s_form.status }}
+            <input type="submit" value="تغییر وضعییت" class="btn btn-success">
+        </form>
+    {% endif %}
+    <hr>
+    <small>{{ ticket.datetime }}</small>
+    <br>
+    <small>{{ ticket.owner.fullname }}</small>
+    <hr>
+    <h5>{{ ticket.content }}</h5>
+    <hr>
+    <br><br><br>
+    <h3>Comments</h3>
+    <hr>
+    {% if current_user.add_comment %}
+        <div>
+            <form action="" method="POST">
+                <div>{{ c_form.csrf_token }}</div>
+                <div>{{ c_form.comment.label(class='form-control-label') }}:{{ c_form.comment(class='form-control') }}</div>
+                <br>
+                <input type="submit" value="ثبت" class="btn btn-primary">
+            </form>
+        </div>
+    {% endif %}
+    <div>
+        {%for comment in comments%}
+            <h4>{{ comment.owner.fullname }}</h4>
+            <small>{{ comment.datetime }}</small>
+            <hr>
+            <h5>{{ comment.comment }}</h5>
+            <br><br>
+        {%endfor%}
+    </div>
+
+
+{% endblock %}
