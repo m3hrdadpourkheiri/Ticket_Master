@@ -6,9 +6,16 @@
     <hr>
     {% if current_user.change_status %}
         <form action="" method="POST">
-            {{ c_form.csrf_token }}
+            {{ s_form.csrf_token }}
             {{ s_form.status.label(class='form-control-label') }}:{{ s_form.status }}
             <input type="submit" value="تغییر وضعییت" class="btn btn-success">
+        </form>
+    {% endif %}
+    {% if current_user.change_status %}
+        <form action="" method="POST">
+            {{ t_form.csrf_token }}
+            {{ t_form.refer.label(class='form-control-label') }}:{{ t_form.refer }}
+            <input type="submit" value="ارجاع" class="btn btn-success">
         </form>
     {% endif %}
     <hr>

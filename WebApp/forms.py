@@ -75,6 +75,11 @@ class NewTicketForm(FlaskForm):
 class StatusForm(FlaskForm):
     status = SelectField('وضعیت تیکت',choices=[('باز','باز'), ('در حال انجام','در حال انجام'), ('درحال پیگیری','در حال پیگیری'),('معلق','معلق'),('بسته','بسته')])
 
+
+class ChangeTechnicianForm(FlaskForm):
+    refer = SelectField('ارجاع به')
+
+
 class CommentForm(FlaskForm):
     comment=TextAreaField('یاداشت',validators=[DataRequired()])
 

@@ -12,6 +12,7 @@
         <th scope="col">ثبت کننده</th>
         <th scope="col">وضعییت</th>
         <th scope="col">اولوییت</th>
+        <th scope="col">کارشناس</th>
         <th scope="col">تاریخ و ساعت</th>
       </tr>
     </thead>
@@ -24,6 +25,15 @@
                     <td>{{ ticket.owner.fullname }}</td>
                     <td>{{ ticket.status }}</td>
                     <td>{{ ticket.priority }}</td>
+                    <td>
+                          
+                            {% for tech in technicians %}
+                              {% if ticket.technician_id ==  tech.id %}
+                                {{ tech.fullname }}
+                              {% endif %}
+                            {% endfor %}
+
+                    </td>
                     <td>{{ ticket.datetime }}</td>
                 </tr>
             
