@@ -86,4 +86,12 @@ class ChangeTechnicianForm(FlaskForm):
 class CommentForm(FlaskForm):
     comment=TextAreaField('یاداشت',validators=[DataRequired()])
 
+
+class NewTelForm(FlaskForm):
+    fullname=StringField('نام و نام خانوادگی',validators=[DataRequired(),Length(min=3,max=30,message='مقدار نام و نام خانوادگی باید بین 3 تا 30 کاراکتر باشد')])
+    tel=StringField('شماره تلفن',validators=[DataRequired(),Length(min=3,max=30,message='شماره تلفن باید بین 3 تا 30 رقم باشد')])
+    mob=StringField('شماره موبایل',validators=[Length(min=3,max=30,message='شماره موبایل باید بین 3 تا 30 رقم باشد')])
+    email=StringField('ایمیل',validators=[Length(min=3,max=30,message='ایمیل باید بین 3 تا 30 کاراکتر باشد')])
+    role=StringField('واحد سازمانی',validators=[Length(min=3,max=30,message='واحد سازمانی باید بین 3 تا 30 کاراکتر باشد')])
+
     

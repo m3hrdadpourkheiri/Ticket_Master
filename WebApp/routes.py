@@ -1,8 +1,8 @@
 from flask import Flask
 from flask import render_template,flash,url_for,redirect,request
 from WebApp import app,db,bcrypt
-from WebApp.models import User,Ticket,Comment
-from WebApp.forms import RegistrationForm,LoginForm,NewTicketForm,CommentForm,StatusForm,NewUserForm,UpdateProfileForm,ChangeTechnicianForm
+from WebApp.models import User,Ticket,Comment,Telbook
+from WebApp.forms import RegistrationForm,LoginForm,NewTicketForm,CommentForm,StatusForm,NewUserForm,UpdateProfileForm,ChangeTechnicianForm,NewTelForm
 from flask_login import login_user,current_user,logout_user,login_remembered,login_required
 import base64
 
@@ -189,6 +189,25 @@ def logout():
     logout_user()
     flash('You logged out successfully','info')
     return redirect(url_for('index'))
+
+
+
+
+
+@app.route('/telbook')
+def telbook():
+    telbook = Telbook.query.all()
+    return render_template('telbook/telbook.html',telbook=telbook)
+
+@app.route('/new_tel',methods=['GET','POST'])
+def new_tel():
+    form = NewTelForm()
+    if form.validate_on_submit():
+        tel = Telbook(fullname=form.fullname.data,tel=form.tel.data,mob=form.mob.data,email=form.email.data,role=form.role.data)
+        db.session.add(tel)
+        db.session.commit()
+        return redirect(url_for('telbook'))
+    return render_template('telbook/newtel.html',form=form)
 
 
 

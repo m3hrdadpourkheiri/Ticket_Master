@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{{ current_user.fullname }}</h3>
+<a href="{{ url_for('new_tel') }}" class="btn btn-primary">ثبت تلفن جدید</a>
+<br>
+<table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">شناسه</th>
+        <th scope="col">نام و نام خانوادگی</th>
+        <th scope="col">تلفن</th>
+        <th scope="col">موبایل</th>
+        <th scope="col">ایمیل</th>
+        <th scope="col">واحد سازمانی</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if telbook %}
+        {% for tel in telbook %}
+                <tr>
+                    <th scope="row">{{ tel.id }}</th>
+                    <td>{{ tel.fullname }}</td>
+                    <td>{{ tel.tel }}</td>
+                    <td>{{ tel.mob }}</td>
+                    <td>{{ tel.email }}</td>
+                    <td>{{ tel.role }}</td>
+                </tr> 
+        {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+{% endblock %} 
