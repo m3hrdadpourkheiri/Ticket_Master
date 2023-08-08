@@ -51,6 +51,7 @@
             <h5>نام و نام خانوادگی: {{ user.fullname }}</h5>
             <h5>نام کاربری: {{ user.username }}</h5>
             <h5>سمت سازمانی: {{ user.role }}</h5>
+            <img src="data:image/jpg;base64,{{ user.image }}" alt="Profile Photo" class="image" />
             <!-- Trigger/Open The Modal -->
             <hr>
             <button id="myBtn" class="btn btn-primary">ویرایش اطلاعات</button>
@@ -62,11 +63,12 @@
               <div class="modal-content">
                 <span class="close">&times;</span>
                 <br>
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         {{ form.csrf_token }}
                         {{ form.fullname.label(class='form-control-label') }}:{{ form.fullname(class='form-control') }}
                         {{ form.username.label(class='form-control-label') }}:{{ form.username(class='form-control') }}
                         {{ form.role.label(class='form-control-label') }}:{{ form.role(class='form-control') }}
+                        {{ form.image.label(class='form-control-label') }}:{{ form.image(class='form-control') }}
                         <br><hr><br>
                         <input type="submit" value="ثبت تغییرات" class="btn btn-success">
                     </form>

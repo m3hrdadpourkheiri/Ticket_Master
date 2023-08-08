@@ -4,7 +4,14 @@ from WebApp import app,db,bcrypt
 from WebApp.models import User,Ticket,Comment
 from WebApp.forms import RegistrationForm,LoginForm,NewTicketForm,CommentForm,StatusForm,NewUserForm,UpdateProfileForm,ChangeTechnicianForm
 from flask_login import login_user,current_user,logout_user,login_remembered,login_required
-import sys
+from werkzeug.utils import secure_filename
+import os
+import base64
+import hashlib
+#from flask_uploads import configure_uploads,IMAGES,UploadSet
+
+
+
 
 
 @app.route('/')
@@ -12,6 +19,14 @@ import sys
 def index():
     return render_template('dashboard.html')
 
+path = os.path.join('static', 'Profile_image')
+app.config['UPLOAD_FOLDER'] = path
+
+#os.makedirs(path)
+
+# app.config['UPLOAD_IMAGES_DEST'] = 'uploads/'
+# images = UploadSet('images',IMAGES)
+# configure_uploads(app,images)
 
 
 @app.route('/register',methods=['GET','POST'])
@@ -144,6 +159,7 @@ def login():
 
 
 @app.route('/user/new',methods=['GET','POST'])
+#@login_required
 def new_user():
     form= NewUserForm()
     users =User.query.all()
@@ -160,14 +176,24 @@ def new_user():
 
 
 @app.route('/profile',methods=['GET','POST'])
+@login_required
 def profile():
     form = UpdateProfileForm()
     user = current_user
+    user.image=user.image.decode('utf-8')
+    app.logger.info(user.image[0:100])
     if form.validate_on_submit():
         app.logger.info('profile updated !!!!!!!!!!!!!!!!')
         user.fullname=form.fullname.data
         user.username=form.username.data
         user.role=form.role.data
+        
+        if form.image.data:
+            Image_file = request.files['image']
+            #Image_file_name = secure_filename(Image_file.filename)
+            #mimetype = Image_file.mimetype
+            user.image = base64_bytes = base64.b64encode(Image_file.read()) 
+  
         db.session.commit()
         flash('اطلاعات کاربری شما بروز رسانی شد','success')
     else:
@@ -179,7 +205,7 @@ def profile():
     return render_template('admin/profile.html',user=current_user,form=form)
 
 
-
+ 
 
 
 

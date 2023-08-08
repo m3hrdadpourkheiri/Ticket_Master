@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,BooleanField,TextAreaField,SelectField
+from wtforms import StringField,PasswordField,BooleanField,TextAreaField,SelectField,FileField
 from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
 from WebApp.models import User
+import regexp 
 
 
 class RegistrationForm(FlaskForm):
@@ -50,6 +51,8 @@ class UpdateProfileForm(FlaskForm):
     fullname = StringField('نام و نام خانوادگی',validators=[DataRequired(), Length(min=4,max=25,message='نام کاربری باید بین 4 تا 25 کاراکتر باشد')])
     username = StringField('نام کاربری',validators=[DataRequired()])
     role = StringField('سمت سازمانی')
+    image = FileField('تصویر پروفایل')
+
 
     
         

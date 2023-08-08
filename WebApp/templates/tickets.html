@@ -17,6 +17,7 @@
       </tr>
     </thead>
     <tbody>
+      {% if tickets %}
         {% for ticket in tickets %}
             
                 <tr>
@@ -38,6 +39,7 @@
                 </tr>
             
         {% endfor %}
+      {% endif %}
     </tbody>
   </table>
 {% endblock %} 

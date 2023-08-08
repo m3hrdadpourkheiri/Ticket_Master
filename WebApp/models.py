@@ -17,6 +17,7 @@ class User(db.Model,UserMixin):
     username = db.Column(db.String(60),unique=True,nullable=False)
     password = db.Column(db.String(60),nullable=False)
     role = db.Column(db.String(60),unique=False,nullable=True)
+    image = db.Column(db.Text,nullable=True)
     #admin = db.Column(db.Boolean,nullable=True)
     add_ticket = db.Column(db.Boolean,nullable=True)
     add_comment = db.Column(db.Boolean,nullable=True)
