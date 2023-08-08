@@ -1,7 +1,7 @@
 from WebApp import db,login_manager
 import datetime
 from flask_login import UserMixin
-
+import jdatetime
 
 
 
@@ -34,7 +34,7 @@ class Ticket(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     title = db.Column(db.String(120),nullable=False)
     content = db.Column(db.Text,nullable=False)
-    datetime = db.Column(db.DateTime,nullable=False,default=datetime.datetime.now)
+    datetime = db.Column(db.String(30),nullable=False,default=str(jdatetime.date.fromgregorian(day=jdatetime.datetime.strptime( str(datetime.datetime.now()),'%Y-%m-%d %H:%M:%S.%f').day,month=jdatetime.datetime.strptime( str(datetime.datetime.now()),'%Y-%m-%d %H:%M:%S.%f').month,year=jdatetime.datetime.strptime( str(datetime.datetime.now()),'%Y-%m-%d %H:%M:%S.%f').year))+' '+str(datetime.datetime.now().strftime("%H:%M:%S")))
     priority = db.Column(db.String(10),nullable=False)
     status = db.Column(db.String(30),nullable=True)
     comments=db.relationship('Comment',backref='ticket',lazy=True)

@@ -4,11 +4,12 @@ from WebApp import app,db,bcrypt
 from WebApp.models import User,Ticket,Comment
 from WebApp.forms import RegistrationForm,LoginForm,NewTicketForm,CommentForm,StatusForm,NewUserForm,UpdateProfileForm,ChangeTechnicianForm
 from flask_login import login_user,current_user,logout_user,login_remembered,login_required
-from werkzeug.utils import secure_filename
-import os
 import base64
-import hashlib
-#from flask_uploads import configure_uploads,IMAGES,UploadSet
+import jdatetime 
+import datetime
+
+
+
 
 
 
@@ -19,14 +20,6 @@ import hashlib
 def index():
     return render_template('dashboard.html')
 
-path = os.path.join('static', 'Profile_image')
-app.config['UPLOAD_FOLDER'] = path
-
-#os.makedirs(path)
-
-# app.config['UPLOAD_IMAGES_DEST'] = 'uploads/'
-# images = UploadSet('images',IMAGES)
-# configure_uploads(app,images)
 
 
 @app.route('/register',methods=['GET','POST'])
@@ -55,21 +48,11 @@ def new_ticket():
         ticket = Ticket(title=form.title.data,content=form.content.data,priority=form.priority.data,owner=current_user,status='باز',technician_id=form.refer.data)
         db.session.add(ticket)
         db.session.commit()
-        app.logger.info('data db saved !!!!!!!!!!!!!!!!')
         flash('تیکت با موفقییت ثبت شد','success')
         return redirect(url_for('index'))
     else:
-        app.logger.info('data no saved ................')
         return render_template('new_ticket.html',form=form)
     
-
-
-
-
-
-
-
-
 
 
 @app.route('/ticket/<int:ticket_id>/details',methods=['GET','POST'])
@@ -79,7 +62,6 @@ def show_ticket(ticket_id):
     s_form=StatusForm()
     t_form=ChangeTechnicianForm()
     t_form.refer.choices =[(technician.id,technician.fullname) for technician in User.query.filter_by(technician=True)]
-    #t_form.refer.choices.append('Please choose')
     ticket=Ticket.query.filter_by(id=ticket_id).first()
 
     if c_form.validate_on_submit():
@@ -98,7 +80,6 @@ def show_ticket(ticket_id):
         user=User.query.filter_by(id=t_form.refer.data).first()
         flash('ارجاع به '+user.fullname+' انجام شد','success')
         return redirect(url_for('all_ticket'))
-        
 
     comments=Comment.query.filter_by(ticket=ticket)
     return render_template('ticket_details.html',ticket=ticket,c_form=c_form,s_form=s_form,t_form=t_form,comments=comments)
@@ -112,9 +93,6 @@ def refers():
     return render_template('tickets.html',tickets=tickets)
 
 
-
-
-
 @app.route('/ticket/all',methods=['GET','POST'])
 @login_required
 def all_ticket():
@@ -122,20 +100,14 @@ def all_ticket():
     if current_user.ticket_master==True:
         tickets = Ticket.query.all()
     else:
-        tickets = Ticket.query.filter_by(owner=current_user),
+        tickets = Ticket.query.filter_by(owner=current_user)
+
+    
+
 
     return render_template('tickets.html',tickets=tickets,technicians=technicians)
 
     
-    
-
-
-
-
-
-
-
-
 
 @app.route('/login',methods=['GET','POST'])
 def login():
@@ -154,8 +126,6 @@ def login():
         else:
             flash('اطلاعات ورود اشتباه می باشد','danger')
     return render_template('login.html',form=form)
-
-
 
 
 @app.route('/user/new',methods=['GET','POST'])
@@ -180,10 +150,7 @@ def new_user():
 def profile():
     form = UpdateProfileForm()
     user = current_user
-    user.image=user.image.decode('utf-8')
-    app.logger.info(user.image[0:100])
     if form.validate_on_submit():
-        app.logger.info('profile updated !!!!!!!!!!!!!!!!')
         user.fullname=form.fullname.data
         user.username=form.username.data
         user.role=form.role.data
@@ -200,23 +167,9 @@ def profile():
         form.fullname.data=user.fullname
         form.username.data=user.username
         form.role.data=user.role
-        #app.logger.info('no update !!!!!!!!!!!!!!!!')
-        
+
+    user.image=user.image.decode('utf-8')
     return render_template('admin/profile.html',user=current_user,form=form)
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
 
 
 @app.route('/logout')
