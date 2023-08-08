@@ -5,8 +5,7 @@ from WebApp.models import User,Ticket,Comment
 from WebApp.forms import RegistrationForm,LoginForm,NewTicketForm,CommentForm,StatusForm,NewUserForm,UpdateProfileForm,ChangeTechnicianForm
 from flask_login import login_user,current_user,logout_user,login_remembered,login_required
 import base64
-import jdatetime 
-import datetime
+
 
 
 
@@ -18,6 +17,8 @@ import datetime
 @app.route('/')
 @login_required
 def index():
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     return render_template('dashboard.html')
 
 
@@ -40,6 +41,8 @@ def register():
 @app.route('/ticket/new',methods=['GET','POST'])
 @login_required
 def new_ticket():
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     #technicians=User.query.filter_by(technician=True)
     form = NewTicketForm()
     form.refer.choices =[(technician.id,technician.fullname) for technician in User.query.filter_by(technician=True)]
@@ -58,6 +61,8 @@ def new_ticket():
 @app.route('/ticket/<int:ticket_id>/details',methods=['GET','POST'])
 @login_required
 def show_ticket(ticket_id):
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     c_form = CommentForm()
     s_form=StatusForm()
     t_form=ChangeTechnicianForm()
@@ -89,6 +94,8 @@ def show_ticket(ticket_id):
 @app.route('/ticket/refer')
 @login_required
 def refers():
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     tickets = Ticket.query.filter_by(technician_id=current_user.id)
     return render_template('tickets.html',tickets=tickets)
 
@@ -96,6 +103,8 @@ def refers():
 @app.route('/ticket/all',methods=['GET','POST'])
 @login_required
 def all_ticket():
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     technicians = User.query.filter_by(technician=True)
     if current_user.ticket_master==True:
         tickets = Ticket.query.all()
@@ -131,6 +140,8 @@ def login():
 @app.route('/user/new',methods=['GET','POST'])
 #@login_required
 def new_user():
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     form= NewUserForm()
     users =User.query.all()
     if form.validate_on_submit():
@@ -157,8 +168,6 @@ def profile():
         
         if form.image.data:
             Image_file = request.files['image']
-            #Image_file_name = secure_filename(Image_file.filename)
-            #mimetype = Image_file.mimetype
             user.image = base64_bytes = base64.b64encode(Image_file.read()) 
   
         db.session.commit()
@@ -168,7 +177,9 @@ def profile():
         form.username.data=user.username
         form.role.data=user.role
 
-    user.image=user.image.decode('utf-8')
+    if user.image:
+        user.image=user.image.decode('utf-8')
+
     return render_template('admin/profile.html',user=current_user,form=form)
 
 
