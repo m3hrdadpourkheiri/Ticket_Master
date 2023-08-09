@@ -56,10 +56,12 @@
             <h5>نام و نام خانوادگی: {{ user.fullname }}</h5>
             <h5>نام کاربری: {{ user.username }}</h5>
             <h5>سمت سازمانی: {{ user.role }}</h5>
-            <img src="data:image/jpg;base64,{{ user.image }}" alt="Profile Photo" class="profile_image" />
+            {% if current_user.image %}
+              <img src="data:image/jpg;base64,{{ user.image }}" alt="Profile Photo" class="profile_image" />
+            {% endif %}
             <!-- Trigger/Open The Modal -->
             <hr>
-            <button id="myBtn" class="btn btn-primary">ویرایش اطلاعات</button>
+            <button id="myBtn" class="btn btn-primary"><i class="fa fa-edit"></i></button>
             
             <!-- The Modal -->
             <div id="myModal" class="modal">
@@ -75,7 +77,7 @@
                         {{ form.role.label(class='form-control-label') }}:{{ form.role(class='form-control') }}
                         {{ form.image.label(class='form-control-label') }}:{{ form.image(class='form-control') }}
                         <br><hr><br>
-                        <input type="submit" value="ثبت تغییرات" class="btn btn-success">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save"></i></button>
                     </form>
               </div>
             </div>

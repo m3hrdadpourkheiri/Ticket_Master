@@ -4,9 +4,11 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     {% if current_user.is_authenticated %}
-      <div>
-        <a href="{{url_for('profile')}}"><img src="data:image/jpg;base64,{{ current_user.image }}" alt="Profile Photo" class="profile_image" style="border-radius: 50%; height: 50px; width: 50px" /></a>
-      </div>
+      {% if current_user.image %}
+        <div>
+          <a href="{{url_for('profile')}}"><img src="data:image/jpg;base64,{{ current_user.image }}" alt="Profile Photo" class="profile_image" style="border-radius: 50%; height: 50px; width: 50px" /></a>
+        </div>
+      {% endif %}
     {% endif %}
       <div class="navbar-nav">
         <a class="nav-link" href="{{url_for('index')}}">داشبورد</a>

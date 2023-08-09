@@ -196,11 +196,15 @@ def logout():
 
 @app.route('/telbook')
 def telbook():
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     telbook = Telbook.query.all()
     return render_template('telbook/telbook.html',telbook=telbook)
 
 @app.route('/new_tel',methods=['GET','POST'])
 def new_tel():
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
     form = NewTelForm()
     if form.validate_on_submit():
         tel = Telbook(fullname=form.fullname.data,tel=form.tel.data,mob=form.mob.data,email=form.email.data,role=form.role.data)
@@ -209,6 +213,36 @@ def new_tel():
         return redirect(url_for('telbook'))
     return render_template('telbook/newtel.html',form=form)
 
+@app.route('/tel/<id>/delete')
+def delete_tel(id):
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
+    tel = Telbook.query.filter_by(id=id).first()
+    db.session.delete(tel)
+    db.session.commit()
+    return redirect(url_for('telbook'))
 
+@app.route('/tel/<id>/edit',methods=['GET','POST'])
+def edit_tel(id):
+    if current_user.image:
+        current_user.image=current_user.image.decode('utf-8')
+    form = NewTelForm()
+    tel = Telbook.query.filter_by(id=id).first()
+    if form.validate_on_submit():
+        tel.fullname=form.fullname.data
+        tel.tel=form.tel.data
+        tel.mob=form.mob.data
+        tel.email=form.email.data
+        tel.role=form.role.data
+        db.session.commit()
+        return redirect(url_for('telbook'))
+    else:
+        form.fullname.data=tel.fullname
+        form.tel.data=tel.tel
+        form.mob.data=tel.mob
+        form.email.data=tel.email
+        form.role.data=tel.role
+
+    return render_template('telbook/edittel.html',form=form)
 
 
