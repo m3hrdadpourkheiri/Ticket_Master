@@ -4,10 +4,10 @@
     {% include 'inc/error_message.html' %}
     <form action="" method="post">
         <div>{{ form.csrf_token }}</div>
-        <div>{{ form.username.label(class='form-control-label') }} : {{ form.username(class='form-control') }}</div>
-        <div>{{ form.password.label(class='form-control-label') }} : {{ form.password(class='form-control') }}</div>
+        <div>{{ labels.LogiForm_Username }} : {{ form.username(class='form-control') }}</div>
+        <div>{{ labels.LogiForm_Password }} : {{ form.password(class='form-control') }}</div>
         <br>
-        <div>{{ form.remember.label }}{{ form.remember }}</div>
+        <div>{{ labels.LogiForm_RememberMe }}{{ form.remember }}</div>
         <br>
         <div><input type="submit" value="ورود" class="btn btn-success"></div>
     </form>

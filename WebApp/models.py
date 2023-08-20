@@ -10,6 +10,14 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
+'''class Organization_Unit(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    name = db.Column(db.String(30),unique=True)
+    users=db.relationship('User',backref='ou',lazy=True)'''
+
+
+
+
 class User(db.Model,UserMixin):
     id = db.Column(db.Integer,primary_key=True)
     fullname = db.Column(db.String(30),unique=False,nullable=False)
@@ -17,16 +25,17 @@ class User(db.Model,UserMixin):
     password = db.Column(db.String(60),nullable=False)
     role = db.Column(db.String(60),unique=False,nullable=True)
     image = db.Column(db.Text,nullable=True)
-    #admin = db.Column(db.Boolean,nullable=True)
     add_ticket = db.Column(db.Boolean,nullable=True)
     add_comment = db.Column(db.Boolean,nullable=True)
     change_status = db.Column(db.Boolean,nullable=True)
     ticket_master = db.Column(db.Boolean,nullable=True)
     technician = db.Column(db.Boolean,nullable=True)
     Report = db.Column(db.Boolean,nullable=True)
-    #photo
+    teladmin = db.Column(db.Boolean,nullable=True)
+    #OU = db.Column(db.Integer,db.ForeignKey('Organization_Unit.id'),nullable=True)
     tickets=db.relationship('Ticket',backref='owner',lazy=True) 
     comments=db.relationship('Comment',backref='owner',lazy=True) 
+
 
 
 class Ticket(db.Model):
@@ -70,10 +79,6 @@ class Status(db.Model):
     status = db.Column(db.String(60),unique=True,nullable=False)
 
 
-
-
-
-
 class Telbook(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     fullname= db.Column(db.String(30),unique=False,nullable=False)
@@ -81,3 +86,5 @@ class Telbook(db.Model):
     mob=db.Column(db.String(30),unique=False,nullable=True)
     email=db.Column(db.String(30),unique=False,nullable=True)  
     role= db.Column(db.String(30),unique=False,nullable=True)  
+
+

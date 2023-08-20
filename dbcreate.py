@@ -1,4 +1,4 @@
-from WebApp.models import User,Ticket,Priority,Status
+#from WebApp.models import User,Ticket,Priority,Status,Organization_Unit,Comment
 from WebApp import db
 from WebApp import app
 

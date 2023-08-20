@@ -5,9 +5,12 @@ from WebApp.models import User,Ticket,Comment,Telbook
 from WebApp.forms import RegistrationForm,LoginForm,NewTicketForm,CommentForm,StatusForm,NewUserForm,UpdateProfileForm,ChangeTechnicianForm,NewTelForm
 from flask_login import login_user,current_user,logout_user,login_remembered,login_required
 import base64
+import json
+from config import language
 
 
-
+with open('Ticket_App/Language_Pack/{}.json'.format(language),encoding='utf-8') as json_data:
+    language_data=json.load(json_data)
 
 
 
@@ -19,7 +22,7 @@ import base64
 def index():
     if current_user.image:
         current_user.image=current_user.image.decode('utf-8')
-    return render_template('dashboard.html')
+    return render_template('dashboard.html',labels=language_data)
 
 
 
@@ -35,7 +38,7 @@ def register():
         flash('کاربر با موفقییت ایجاد شد','success')
         return redirect(url_for('index'))
     else:
-        return render_template('register.html',form=form)
+        return render_template('register.html',form=form,labels=language_data)
     
 
 @app.route('/ticket/new',methods=['GET','POST'])
@@ -54,7 +57,7 @@ def new_ticket():
         flash('تیکت با موفقییت ثبت شد','success')
         return redirect(url_for('index'))
     else:
-        return render_template('new_ticket.html',form=form)
+        return render_template('new_ticket.html',form=form,labels=language_data)
     
 
 
@@ -87,7 +90,7 @@ def show_ticket(ticket_id):
         return redirect(url_for('all_ticket'))
 
     comments=Comment.query.filter_by(ticket=ticket)
-    return render_template('ticket_details.html',ticket=ticket,c_form=c_form,s_form=s_form,t_form=t_form,comments=comments)
+    return render_template('ticket_details.html',ticket=ticket,c_form=c_form,s_form=s_form,t_form=t_form,comments=comments,labels=language_data)
 
 
 
@@ -97,7 +100,7 @@ def refers():
     if current_user.image:
         current_user.image=current_user.image.decode('utf-8')
     tickets = Ticket.query.filter_by(technician_id=current_user.id)
-    return render_template('tickets.html',tickets=tickets)
+    return render_template('tickets.html',tickets=tickets,labels=language_data)
 
 
 @app.route('/ticket/all',methods=['GET','POST'])
@@ -114,7 +117,7 @@ def all_ticket():
     
 
 
-    return render_template('tickets.html',tickets=tickets,technicians=technicians)
+    return render_template('tickets.html',tickets=tickets,technicians=technicians,labels=language_data)
 
     
 
@@ -134,7 +137,7 @@ def login():
             return redirect(next_page if next_page else url_for('index'))
         else:
             flash('اطلاعات ورود اشتباه می باشد','danger')
-    return render_template('login.html',form=form)
+    return render_template('login.html',form=form,labels=language_data)
 
 
 @app.route('/user/new',methods=['GET','POST'])
@@ -151,7 +154,7 @@ def new_user():
         db.session.commit()
         flash('کاربر با موفقییت ایجاد شد','success')
         
-    return render_template('admin/users.html',users=users,form=form)
+    return render_template('admin/users.html',users=users,form=form,labels=language_data)
 
 
 
@@ -180,7 +183,7 @@ def profile():
     if user.image:
         user.image=user.image.decode('utf-8')
 
-    return render_template('admin/profile.html',user=current_user,form=form)
+    return render_template('admin/profile.html',user=current_user,form=form,labels=language_data)
 
 
 @app.route('/logout')
@@ -199,7 +202,7 @@ def telbook():
     if current_user.image:
         current_user.image=current_user.image.decode('utf-8')
     telbook = Telbook.query.all()
-    return render_template('telbook/telbook.html',telbook=telbook)
+    return render_template('telbook/telbook.html',telbook=telbook,labels=language_data)
 
 @app.route('/new_tel',methods=['GET','POST'])
 def new_tel():
@@ -211,7 +214,7 @@ def new_tel():
         db.session.add(tel)
         db.session.commit()
         return redirect(url_for('telbook'))
-    return render_template('telbook/newtel.html',form=form)
+    return render_template('telbook/newtel.html',form=form,labels=language_data)
 
 @app.route('/tel/<id>/delete')
 def delete_tel(id):
@@ -243,6 +246,6 @@ def edit_tel(id):
         form.email.data=tel.email
         form.role.data=tel.role
 
-    return render_template('telbook/edittel.html',form=form)
+    return render_template('telbook/edittel.html',form=form,labels=language_data)
 
 

@@ -2,7 +2,9 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,PasswordField,BooleanField,TextAreaField,SelectField,FileField
 from wtforms.validators import DataRequired,Length,Email,EqualTo,ValidationError
 from WebApp.models import User
-import regexp 
+
+
+
 
 
 class RegistrationForm(FlaskForm):
@@ -29,6 +31,7 @@ class NewUserForm(FlaskForm):
     username = StringField('نام کاربری',validators=[DataRequired()])
     password = PasswordField('کلمه عبور',validators=[DataRequired(),Length(min=8,max=25,message='کلمه عبور باید بین 8 تا 25 کاراکتر باشد')])
     confirm_password = PasswordField('تایید کلمه عبور',validators=[DataRequired(),EqualTo('password',message='تایید کلمه عبور و کلمه عبور باید یکسان باشند')])
+    Unit = SelectField('واحد سازمانی')
     role = StringField('سمت سازمانی')
     #admin = BooleanField('دسترسی مدیریتی')
     add_ticket = BooleanField('دسترسی ثبت تیکت جدید')
@@ -52,13 +55,6 @@ class UpdateProfileForm(FlaskForm):
     username = StringField('نام کاربری',validators=[DataRequired()])
     role = StringField('سمت سازمانی')
     image = FileField('تصویر پروفایل')
-
-
-    
-        
-
-
-
 
 
 

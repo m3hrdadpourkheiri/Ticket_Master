@@ -1,0 +1,43 @@
+{
+    "RegistrationForm_Fullname":"Fullname",
+    "RegistrationForm_Username":"Username",
+    "RegistrationForm_Password":"Password",
+    "RegistrationForm_ConfirmPassword":"Confirm Password",
+
+    "LogiForm_Username":"Username",
+    "LogiForm_Password":"Password",
+    "LogiForm_RememberMe":"Remember Me",
+
+
+    "NewUserForm_Fullname":"Fullname",
+    "NewUserForm_Username":"Username",
+    "NewUserForm_Password":"Password",
+    "NewUserForm_ConfirmPassword":"Confirm Password",
+    "NewUserForm_OrganizationUnit":"Organization Unit",
+    "NewUserForm_Role":"Role",
+    "NewUserForm_AddTicketPermission":"Add ticket permission",
+    "NewUserForm_AddCommentPermission":"Add comment permission",
+    "NewUserForm__ChangeStatusPermission":"Change status permission",
+    "NewUserForm_TicketMaster":"Ticket master",
+    "NewUserForm_Technesian":"Technician",
+    "NewUserForm_ReportPermission":"Report View",
+
+    "UpdateProfileForm_Fullname":"",
+    "UpdateProfileForm_Username":"",
+    "UpdateProfileForm_Role":"",
+    "UpdateProfileForm_Image":"",
+
+    "NewTicketForm_Title":"",
+    "NewTicketForm_Content":"",
+    "NewTicketForm_Priority":"",
+    "NewTicketForm_Refer":"",
+
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+
+}
