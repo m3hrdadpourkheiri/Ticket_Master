@@ -1,1 +1,1 @@
-language='fa'       #value Set fa=Farsi en=English
+language='en'       #value Set fa=Persian en=English ar=Arabic du=dutche

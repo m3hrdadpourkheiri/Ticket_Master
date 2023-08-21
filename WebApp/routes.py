@@ -35,7 +35,7 @@ def register():
         user = User(fullname=form.fullname.data,username=form.username.data,password=hashed_pass)
         db.session.add(user)
         db.session.commit()
-        flash('کاربر با موفقییت ایجاد شد','success')
+        flash(language_data['Message_createUserSuccess'],'success')
         return redirect(url_for('index'))
     else:
         return render_template('register.html',form=form,labels=language_data)
@@ -54,7 +54,7 @@ def new_ticket():
         ticket = Ticket(title=form.title.data,content=form.content.data,priority=form.priority.data,owner=current_user,status='باز',technician_id=form.refer.data)
         db.session.add(ticket)
         db.session.commit()
-        flash('تیکت با موفقییت ثبت شد','success')
+        flash(language_data['Message_TicketAddedSuccess'],'success')
         return redirect(url_for('index'))
     else:
         return render_template('new_ticket.html',form=form,labels=language_data)
@@ -80,13 +80,13 @@ def show_ticket(ticket_id):
     if s_form.validate_on_submit():
         ticket.status = s_form.status.data
         db.session.commit()
-        flash('وضعییت تغییر کرد','success')
+        flash(language_data['Message_StatusChanged'],'success')
 
     if t_form.validate_on_submit():
         ticket.technician_id=t_form.refer.data
         db.session.commit()
         user=User.query.filter_by(id=t_form.refer.data).first()
-        flash('ارجاع به '+user.fullname+' انجام شد','success')
+        flash(language_data['Message_ReferedSuccess'],'success')
         return redirect(url_for('all_ticket'))
 
     comments=Comment.query.filter_by(ticket=ticket)
@@ -133,10 +133,14 @@ def login():
             login_user(user,remember=form.remember.data)
             next_page = request.args.get('next')
 
-            flash('شما با موفقییت به سایت وارد شدید','success')
+            #MESSAGE=str(language_data.Message_YouLogedinSuccess)
+            #app.logger.warning(language_data[Message_YouLogedinSuccess])
+            flash(language_data['Message_YouLogedinSuccess'],'success')
             return redirect(next_page if next_page else url_for('index'))
         else:
-            flash('اطلاعات ورود اشتباه می باشد','danger')
+            #MESSAGE=str(language_data.Message_LoginFailed)
+            #app.logger.warning(language_data[Message_YouLogedinSuccess])
+            flash(language_data['Message_LoginFailed'],'danger')
     return render_template('login.html',form=form,labels=language_data)
 
 
@@ -152,7 +156,7 @@ def new_user():
         user = User(fullname=form.fullname.data,username=form.username.data,password=hashed_pass,role=form.role.data,add_ticket=form.add_ticket.data,add_comment=form.add_comment.data,change_status=form.change_status.data,ticket_master=form.ticket_master.data,technician=form.technician.data,Report=form.Report.data)
         db.session.add(user)
         db.session.commit()
-        flash('کاربر با موفقییت ایجاد شد','success')
+        flash(language_data['Message_UserCreatedSuccess'],'success')
         
     return render_template('admin/users.html',users=users,form=form,labels=language_data)
 
@@ -174,7 +178,7 @@ def profile():
             user.image = base64_bytes = base64.b64encode(Image_file.read()) 
   
         db.session.commit()
-        flash('اطلاعات کاربری شما بروز رسانی شد','success')
+        flash(language_data['Message_UpdateProfileSuccess'],'success')
     else:
         form.fullname.data=user.fullname
         form.username.data=user.username
@@ -190,7 +194,7 @@ def profile():
 @login_required
 def logout():
     logout_user()
-    flash('You logged out successfully','info')
+    flash(language_data['Message_LogoutSuccess'],'info')
     return redirect(url_for('index'))
 
 

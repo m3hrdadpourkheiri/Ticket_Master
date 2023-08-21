@@ -84,5 +84,15 @@
     "ProfilePage_Title":"User Profile",
     "ProfilePage_Fullname":"Fullname",
     "ProfilePage_Username":"Username",
-    "ProfilePage_Role":"Role"
+    "ProfilePage_Role":"Role",
+
+    "Message_createUserSuccess":"New user created successfully",
+    "Message_TicketAddedSuccess":"New Ticket added successfully",
+    "Message_StatusChanged":"Status changed succesfully",
+    "Message_ReferedSuccess":"Ticket referd successfully",
+    "Message_YouLogedinSuccess":"You loge in successfully",
+    "Message_LoginFailed":"Your credentials is wrong",
+    "Message_UserCreatedSuccess":"New user created successfully",
+    "Message_UpdateProfileSuccess":"You profile data updated successfully",
+    "Message_LogoutSuccess":"You loged out successfully"
 }

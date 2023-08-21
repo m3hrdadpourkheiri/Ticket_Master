@@ -84,5 +84,16 @@
     "ProfilePage_Title":"پروفایل کاربر",
     "ProfilePage_Fullname":"نام و نام خانوادگی",
     "ProfilePage_Username":"نام کاربری",
-    "ProfilePage_Role":"سمت سازمانی"
+    "ProfilePage_Role":"سمت سازمانی",
+
+    
+    "Message_createUserSuccess":"کاربر جدید با موفقییت ایجاد شد",
+    "Message_TicketAddedSuccess":"تیکت جدید با موفقییت ایجاد شد",
+    "Message_StatusChanged":"وضعییت تیکت تغییر داده شد",
+    "Message_ReferedSuccess":"ارجاع با موفقییت انجام شد",
+    "Message_YouLogedinSuccess":"شما با موفقییت به سامانه وارد شدید",
+    "Message_LoginFailed":"اطلاعات ورود شما اشتباه می باشد",
+    "Message_UserCreatedSuccess":"کاربر جدید با موفقییت ایجاد شد",
+    "Message_UpdateProfileSuccess":"اطلاعات کاربری شما با موفقییت بروز رسانی شد",
+    "Message_LogoutSuccess":"شما از سامانه خارج شدید"
 }
