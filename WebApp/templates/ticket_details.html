@@ -7,14 +7,14 @@
     {% if current_user.change_status %}
         <form action="" method="POST">
             {{ s_form.csrf_token }}
-            {{ s_form.status.label(class='form-control-label') }}:{{ s_form.status }}
+            {{ labels.TicketDetails_Status }}:{{ s_form.status }}
             <input type="submit" value="تغییر وضعییت" class="btn btn-success">
         </form>
     {% endif %}
     {% if current_user.change_status %}
         <form action="" method="POST">
             {{ t_form.csrf_token }}
-            {{ t_form.refer.label(class='form-control-label') }}:{{ t_form.refer }}
+            {{ labels.TicketDetails_Refer }}:{{ t_form.refer }}
             <input type="submit" value="ارجاع" class="btn btn-success">
         </form>
     {% endif %}
@@ -32,7 +32,7 @@
         <div>
             <form action="" method="POST">
                 <div>{{ c_form.csrf_token }}</div>
-                <div>{{ c_form.comment.label(class='form-control-label') }}:{{ c_form.comment(class='form-control') }}</div>
+                <div>{{ labels.TicketDetails_Comment }}:{{ c_form.comment(class='form-control') }}</div>
                 <br>
                 <input type="submit" value="ثبت" class="btn btn-primary">
             </form>

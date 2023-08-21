@@ -4,10 +4,10 @@
     {% include 'inc/error_message.html' %}
     <form action="" method="POST">
         <div>{{ form.csrf_token }}</div>
-        <div>{{ form.title.label(class='form-control-label') }}:{{ form.title(class='form-control') }}</div>
-        <div>{{ form.content.label(class='form-control-label') }}:{{ form.content(class='form-control') }}</div>
-        <div>{{ form.priority.label(class='form-control-label') }}:{{ form.priority(class='form-control') }}</div>
-        <div>{{ form.refer.label(class='form-control-label') }}:{{ form.refer(class='form-control') }}</div>
+        <div>{{ labels.NewTicketForm_Title }}:{{ form.title(class='form-control') }}</div>
+        <div>{{ labels.NewTicketForm_Content }}:{{ form.content(class='form-control') }}</div>
+        <div>{{ labels.NewTicketForm_Priority }}:{{ form.priority(class='form-control') }}</div>
+        <div>{{ labels.NewTicketForm_Refer }}:{{ form.refer(class='form-control') }}</div>
         <br>
         <button type="submit" class="btn btn-success"><i class="fa fa-save"></i></button>
     </form>

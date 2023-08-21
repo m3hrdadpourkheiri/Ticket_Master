@@ -61,17 +61,17 @@
                     <br>
                         <form action="" method="POST">
                             {{ form.csrf_token }}
-                            {{ form.fullname.label(class='form-control-label') }}:{{ form.fullname(class='form-control') }}
-                            {{ form.username.label(class='form-control-label') }}:{{ form.username(class='form-control') }}
-                            {{ form.password.label(class='form-control-label') }}:{{ form.password(class='form-control') }}
-                            {{ form.confirm_password.label(class='form-control-label') }}:{{ form.confirm_password(class='form-control') }}
-                            {{ form.role.label(class='form-control-label') }}:{{ form.role(class='form-control') }}
-                            {{ form.add_ticket.label(class='form-control-label') }}:{{ form.add_ticket }} <br>
-                            {{ form.add_comment.label(class='form-control-label') }}:{{ form.add_comment }} <br>
-                            {{ form.change_status.label(class='form-control-label') }}:{{ form.change_status }} <br>
-                            {{ form.ticket_master.label(class='form-control-label') }}:{{ form.ticket_master }} <br>
-                            {{ form.technician.label(class='form-control-label') }}:{{ form.technician }} <br>
-                            {{ form.Report.label(class='form-control-label') }}:{{ form.Report }} <br>
+                            {{ labels.NewUserForm_Fullname }}:{{ form.fullname(class='form-control') }}
+                            {{ labels.NewUserForm_Username }}:{{ form.username(class='form-control') }}
+                            {{ labels.NewUserForm_Password }}:{{ form.password(class='form-control') }}
+                            {{ labels.NewUserForm_ConfirmPassword }}:{{ form.confirm_password(class='form-control') }}
+                            {{ labels.NewUserForm_Role }}:{{ form.role(class='form-control') }}
+                            {{ labels.NewUserForm_AddTicketPermission }}:{{ form.add_ticket }} <br>
+                            {{ labels.NewUserForm_AddCommentPermission }}:{{ form.add_comment }} <br>
+                            {{ labels.NewUserForm_ChangeStatusPermission }}:{{ form.change_status }} <br>
+                            {{ labels.NewUserForm_TicketMaster }}:{{ form.ticket_master }} <br>
+                            {{ labels.NewUserForm_Technesian }}:{{ form.technician }} <br>
+                            {{ labels.NewUserForm_ReportPermission }}:{{ form.Report }} <br>
                             <br>
                             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i></button>
 
@@ -85,10 +85,10 @@
             <table class="table table-striped table-light">
                 <thead>
                 <tr>
-                    <th scope="col">شناسه</th>
-                    <th scope="col">نام و نام خانوادگی</th>
-                    <th scope="col">نام کاربری</th>
-                    <th scope="col">عملیات</th>
+                    <th scope="col">{{ labels.UserManagerTable_Code }}</th>
+                    <th scope="col">{{ labels.UserManagerTable_Fullname }}</th>
+                    <th scope="col">{{ labels.UserManagerTable_Username }}</th>
+                    <th scope="col">{{ labels.UserManagerTable_Oprations }}</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -1,4 +1,5 @@
 {
+    "Dir":"rtl",
     
     "RegistrationForm_Fullname":"نام و نام خانوادگی",
     "RegistrationForm_Username":"نام کاربری",
@@ -9,9 +10,79 @@
     "LogiForm_Password":"کلمه عبور",
     "LogiForm_RememberMe":"مرا بخاطر بسپار",
 
+    "NewUserForm_Fullname":"نام و نام خانوادگی",
+    "NewUserForm_Username":"نام کاربری",
+    "NewUserForm_Password":"کلمه عبور",
+    "NewUserForm_ConfirmPassword":"تایید کلمه عبور",
+    "NewUserForm_OrganizationUnit":"واحد سازمانی",
+    "NewUserForm_Role":"سمت سازمانی",
+    "NewUserForm_AddTicketPermission":"دسترسی ثبت تیکت",
+    "NewUserForm_AddCommentPermission":"دسترسی اضافه کردن یاداشت به تیکت ها",
+    "NewUserForm__ChangeStatusPermission":"دسترسی تغییر وضعییت تیکت ها ",
+    "NewUserForm_TicketMaster":"تیکت مستر",
+    "NewUserForm_Technesian":"تکنسین",
+    "NewUserForm_ReportPermission":"دسترسی دیدن گزارشات",
 
-    
-    
-    
+    "UpdateProfileForm_Fullname":"نام و نام خانوادگی",
+    "UpdateProfileForm_Username":"نام کاربری",
+    "UpdateProfileForm_Role":"سمت سازمانی",
+    "UpdateProfileForm_Image":"تصویر",
 
+    "NewTicketForm_Title":"عنوان",
+    "NewTicketForm_Content":"محتوا",
+    "NewTicketForm_Priority":"اولوییت",
+    "NewTicketForm_Refer":"ارجاع به",
+
+    "StatusForm_Status":"وضعییت",
+
+    "ChangeTechnicianForm_Refer":"ارجاع به",
+
+    "CommentForm_Comment":"یاداشت",
+
+    "NewTelForm_Fullname":"نام و نام خانوادگی",
+    "NewTelForm_Tel":"تلفن ثابت",
+    "NewTelForm_Mob":"تلفن همراه",
+    "NewTelForm_Email":"ایمیل",
+    "NewTelForm_Role":"سمت سازمانی",
+    
+    "Navbar_Dashboard":"داشبورد",
+    "Navbar_Tickets":"تیکت ها",
+    "Navbar_NewTicket":"تیکت جدید",
+    "Navbar_Refers":"ارجاعات",
+    "Navbar_Profile":"پروفایل",
+    "Navbar_UserManager":"مدیریت کاربران",
+    "Navbar_Logout":"خروج",
+    "Navbar_Signup":"ثبت نام",
+    "Navbar_Login":"ورود",
+    "Navbar_TelBook":"دفترچه تلفن",
+
+    "TicketsTable_Code":"کد",
+    "TicketsTable_Title":"عنوان",
+    "TicketsTable_Owner":"مالک",
+    "TicketsTable_Status":"وضعییت",
+    "TicketsTable_Priority":"اولوییت",
+    "TicketsTable_Technician":"تکنسین",
+    "TicketsTable_DateTime":"تاریخ ساعت",
+
+    "TicketDetails_Status":"وضعییت",
+    "TicketDetails_Refer":"ارجاع",
+    "TicketDetails_Comment":"یاداشت",
+
+    "UserManagerTable_Code":"کد",
+    "UserManagerTable_Fullname":"نام و نام خانوادگی",
+    "UserManagerTable_Username":"نام کاربری",
+    "UserManagerTable_Oprations":"عملیات",
+
+    "TelBokTable_Code":"کد",
+    "TelBokTable_Fullname":"نام و نام خانوادگی",
+    "TelBokTable_PhoneNumber":"شماره تلفن",
+    "TelBokTable_Mobile":"موبایل",
+    "TelBokTable_Email":"ایمیل",
+    "TelBokTable_OrganizationUnit":"واحد سازمانی",
+    "TelBokTable_Oprations":"عملیات",
+
+    "ProfilePage_Title":"پروفایل کاربر",
+    "ProfilePage_Fullname":"نام و نام خانوادگی",
+    "ProfilePage_Username":"نام کاربری",
+    "ProfilePage_Role":"سمت سازمانی"
 }

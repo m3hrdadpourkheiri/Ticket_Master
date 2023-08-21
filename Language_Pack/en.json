@@ -1,4 +1,6 @@
 {
+    "Dir":"ltr",
+
     "RegistrationForm_Fullname":"Fullname",
     "RegistrationForm_Username":"Username",
     "RegistrationForm_Password":"Password",
@@ -8,7 +10,6 @@
     "LogiForm_Password":"Password",
     "LogiForm_RememberMe":"Remember Me",
 
-
     "NewUserForm_Fullname":"Fullname",
     "NewUserForm_Username":"Username",
     "NewUserForm_Password":"Password",
@@ -17,27 +18,71 @@
     "NewUserForm_Role":"Role",
     "NewUserForm_AddTicketPermission":"Add ticket permission",
     "NewUserForm_AddCommentPermission":"Add comment permission",
-    "NewUserForm__ChangeStatusPermission":"Change status permission",
+    "NewUserForm_ChangeStatusPermission":"Change status permission",
     "NewUserForm_TicketMaster":"Ticket master",
     "NewUserForm_Technesian":"Technician",
     "NewUserForm_ReportPermission":"Report View",
 
-    "UpdateProfileForm_Fullname":"",
-    "UpdateProfileForm_Username":"",
-    "UpdateProfileForm_Role":"",
-    "UpdateProfileForm_Image":"",
+    "UpdateProfileForm_Fullname":"Fullname",
+    "UpdateProfileForm_Username":"Username",
+    "UpdateProfileForm_Role":"Role",
+    "UpdateProfileForm_Image":"Photo",
 
-    "NewTicketForm_Title":"",
-    "NewTicketForm_Content":"",
-    "NewTicketForm_Priority":"",
-    "NewTicketForm_Refer":"",
+    "NewTicketForm_Title":"Title",
+    "NewTicketForm_Content":"Content",
+    "NewTicketForm_Priority":"Priority",
+    "NewTicketForm_Refer":"Refer to",
 
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
+    "StatusForm_Status":"Status",
 
+    "ChangeTechnicianForm_Refer":"Refer",
+
+    "CommentForm_Comment":"Comment",
+
+    "NewTelForm_Fullname":"Fullname",
+    "NewTelForm_Tel":"Telephone",
+    "NewTelForm_Mob":"Mobile",
+    "NewTelForm_Email":"Email",
+    "NewTelForm_Role":"Role",
+
+    "Navbar_Dashboard":"Dashboard",
+    "Navbar_Tickets":"Tickets",
+    "Navbar_NewTicket":"New Ticket",
+    "Navbar_Refers":"Refer",
+    "Navbar_Profile":"Profile",
+    "Navbar_UserManager":"User Manager",
+    "Navbar_Logout":"Logout",
+    "Navbar_Signup":"SignUp",
+    "Navbar_Login":"Login",
+    "Navbar_TelBook":"Tel Book",
+
+    "TicketsTable_Code":"Code",
+    "TicketsTable_Title":"Title",
+    "TicketsTable_Owner":"Owner",
+    "TicketsTable_Status":"Status",
+    "TicketsTable_Priority":"Priority",
+    "TicketsTable_Technician":"Technician",
+    "TicketsTable_DateTime":"Date Time",
+
+    "TicketDetails_Status":"Status",
+    "TicketDetails_Refer":"Refer",
+    "TicketDetails_Comment":"Comment",
+
+    "UserManagerTable_Code":"Code",
+    "UserManagerTable_Fullname":"Fullname",
+    "UserManagerTable_Username":"Username",
+    "UserManagerTable_Oprations":"Oprations",
+
+    "TelBokTable_Code":"Code",
+    "TelBokTable_Fullname":"Fullname",
+    "TelBokTable_PhoneNumber":"Phone Number",
+    "TelBokTable_Mobile":"Mobile",
+    "TelBokTable_Email":"Email",
+    "TelBokTable_Organization Unit":"Organization Unit",
+    "TelBokTable_Oprations":"Oprations",
+
+    "ProfilePage_Title":"User Profile",
+    "ProfilePage_Fullname":"Fullname",
+    "ProfilePage_Username":"Username",
+    "ProfilePage_Role":"Role"
 }
