@@ -48,13 +48,7 @@ class Ticket(db.Model):
     comments=db.relationship('Comment',backref='ticket',lazy=True)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False)
     technician_id = db.Column(db.Integer)
-
-
-
-
-
-    #priority = db.Column(db.Integer,db.ForeignKey('priority.id'),nullable=False)
-    #status = db.Column(db.String(10),nullable=False)
+    #priority_id = db.Column(db.Integer,db.ForeignKey('priority.id'),nullable=False)
     #Status_id = db.Column(db.Integer,db.ForeignKey('status.id'),nullable=False)
 
 
