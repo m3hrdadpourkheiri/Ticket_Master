@@ -9,6 +9,12 @@ import json
 from config import language
 
 
+'''app.logger.warning('testing warning log')
+    app.logger.error('testing error log')
+    app.logger.info('testing info log')'''
+
+
+
 with open('Ticket_App/Language_Pack/{}.json'.format(language),encoding='utf-8') as json_data:
     language_data=json.load(json_data)
 

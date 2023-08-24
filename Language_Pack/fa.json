@@ -18,7 +18,7 @@
     "NewUserForm_Role":"سمت سازمانی",
     "NewUserForm_AddTicketPermission":"دسترسی ثبت تیکت",
     "NewUserForm_AddCommentPermission":"دسترسی اضافه کردن یاداشت به تیکت ها",
-    "NewUserForm__ChangeStatusPermission":"دسترسی تغییر وضعییت تیکت ها ",
+    "NewUserForm_ChangeStatusPermission":"دسترسی تغییر وضعییت تیکت ها ",
     "NewUserForm_TicketMaster":"تیکت مستر",
     "NewUserForm_Technesian":"تکنسین",
     "NewUserForm_ReportPermission":"دسترسی دیدن گزارشات",
@@ -86,7 +86,6 @@
     "ProfilePage_Username":"نام کاربری",
     "ProfilePage_Role":"سمت سازمانی",
 
-    
     "Message_createUserSuccess":"کاربر جدید با موفقییت ایجاد شد",
     "Message_TicketAddedSuccess":"تیکت جدید با موفقییت ایجاد شد",
     "Message_StatusChanged":"وضعییت تیکت تغییر داده شد",
